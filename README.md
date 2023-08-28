@@ -71,7 +71,8 @@ For testing purposes, three users are created with the usernames: user1, user2, 
 
 ## URL Shortening Logic
 
-The URL shortening logic uses the nanoid library to generate short codes for long URLs.
+The URL shortening logic includes taking the long url and clipping it into a small one with randomly generated characters and mapping the short-url to the long one.
+(Optional) The URL shortening logic can also use the nanoid library to generate short codes for long URLs.
 
 ## Frontend Integration
 
