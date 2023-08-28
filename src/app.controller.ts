@@ -16,7 +16,7 @@ export class AppController {
 
   // making this route protected such that authenticated users can only access
   @Get('protected')
-  getHello(): string {
-    return this.appService.getHello();
+  getHello(@Request() req): string {
+    return req.user;
   }
 }
