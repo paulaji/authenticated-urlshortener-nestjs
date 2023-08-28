@@ -6,6 +6,8 @@ This document has been authored by referencing the content provided in the backe
 
 #### How to get started with running the project has also been mentioned below.
 
+#### Project snippets/images can be viewed in the images directory in the root.
+
 ## Technologies Used
 
 - NestJS
