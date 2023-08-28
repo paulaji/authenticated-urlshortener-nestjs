@@ -1,0 +1,164 @@
+/////
+/////
+/////
+/////
+/////
+
+notable links: 
+MAIN: 
+http://localhost:3000/login - login page
+
+POSTMAN:
+http://localhost:3000/login - use postman or similar agent to POST and confirm the login 
+http://localhost:3000/protected - after login useing postman or similar agent, this url is available for access
+
+BROWSER:
+http://localhost:3000/ - URL-shortener accessed via browser (bypass the login)
+http://localhost:3000/login - login form accessed via browser
+
+/////
+/////
+/////
+/////
+/////
+
+npm install -g @nestjs/cli@latest // install nestjs cli
+
+nest new project // start a new nest project with name project
+
+cd into the project we just created
+
+npm install --save @nestjs/passport passport passport-local // install passport authenticator and the strategy we will be using is passport-local authentication, which means username and password verification
+npm install --save-dev @types/passport-local // typescript definitions for passport
+
+nest g module users // command to create nest files/folders for users module
+nest g service users // services files where we write logic for users
+
+/////
+/////
+/////
+/////
+/////
+
+now create a basic user model
+manually created 3 users for test purpose in the users.services.ts with names: user1, user2 and user3 all with the same password resu321321
+
+since the passwords are now stored for test purposes
+for production sake, we can use modules like node.bcrypt.js for password hashing
+
+/////
+/////
+/////
+/////
+/////
+
+since we are aiming to go for passport-local authentication, we need to create new module for auth
+nest g module auth // create auth module
+nest g service auth // create auth serives
+g is short for generate and both g/generate will work in cli
+
+how nestjs works is that we create modules for each each and define what that module does / what service it does in the modulename.service.ts and if we want to import, export or use any module in any other, we define those in the modulename.module.ts
+
+/////
+/////
+/////
+/////
+/////
+
+for password verification, we are now going to use passport-local method
+in the auth module, we create local.strategy.ts
+
+everything needs to be registered in the .module.ts file
+
+using passport, we need to specify what method we are using for authorization, here we are using local strategy, therefore we need to create a file local-auth.guard.ts to specify the passport method
+
+/////
+/////
+/////
+/////
+/////
+
+test the login verifier using postman
+
+when we post something, say username and password for verification, first it goes through authguard
+in this case, we have used local strategy as the guard, so it first goes through the local verification strategy
+
+we can use postman to test this out
+
+/////
+/////
+/////
+/////
+/////
+
+nest start:dev // start in dev mode which watches changes
+nest start // to start normally
+
+to show the landingpage, we can take the current context via ExecutionContext
+take into account the contexts that are happening via the ExecutionContext and listen for incoming httprequests and pass them only if the user is authenticated
+
+/////
+/////
+/////
+/////
+/////
+
+npm install express-session // for session management
+
+after that we can define session properties in the main.ts
+in the session details, secret is set as resu321321
+
+now that sessions are set up, we need to serialize the user information such that it can be stored in the sessions, for that we create under auth dir,
+session.serializer.ts
+and register the SessionSerializer in the auth module
+
+/////
+/////
+/////
+/////
+/////
+
+to serve static files, first we have to
+
+npm install --save @nestjs/serve-static // 
+then include this in the app.module.ts
+
+afterwards create a public dir and index.html in it
+
+/////
+/////
+/////
+/////
+/////
+
+url shortening logic in the backend
+
+nest generate module urlshorten // generate the url shorten module
+nest generate service urlshorten // generate the services files associated
+
+in the urlshorten.service.ts we can define the url shortening logic
+in this project, we are utilising the nanoid library to shorten the long url
+
+npm install nanoid // to install the nanoid library
+npm install nanoid @nestjs/common @nestjs/mapped-types // install the other required dependencies
+
+/////
+/////
+/////
+/////
+/////
+
+url shortening logic in the frontend
+
+in the index file, write javascript logic such that we create two objects, a short code and the long url we are presenting to the frontend
+we map the shortcode generated to the long url
+
+/////
+/////
+/////
+/////
+/////
+
+we can set the urlshortener html file under the protected route such that
+    res.sendFile('index.html', { root: 'public' });
+if authentication is done, we can access the url shortener
