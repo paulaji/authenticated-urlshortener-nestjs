@@ -8,6 +8,8 @@ This document has been authored by referencing the content provided in the backe
 
 #### Project snippets/images can be viewed in the images directory in the root.
 
+![homepage](images/nestjs_workingurlshortener.png)
+
 ## Technologies Used
 
 - NestJS
