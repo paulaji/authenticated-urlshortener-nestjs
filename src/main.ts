@@ -9,10 +9,10 @@ async function bootstrap() {
   // express session properties
   app.use(
     session({
-      secret: 'resu321321', // secret is set as resu321321 for easiness
+      secret: 'resu321321',
       resave: false,
       saveUninitialized: false,
-      cookie: { maxAge: 3600000 }, // setting cookie age as 1 hour
+      cookie: { maxAge: 3600000 },
     }),
   );
 
