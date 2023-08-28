@@ -1,10 +1,9 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Auth | URL-shortener | NestJS</title>
-    <!-- Include Bootstrap CSS -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -61,6 +60,83 @@
             console.error('Failed to shorten URL');
           }
         });
+      });
+    </script>
+  </body>
+</html> -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener</title>
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>URL Shortener - NestJS</h1>
+      <div class="mt-3">
+        <label for="longUrl">Enter a long URL:</label>
+        <input
+          type="text"
+          id="longUrl"
+          class="form-control"
+          placeholder="Enter a long URL"
+        />
+      </div>
+      <div class="mt-2">
+        <button id="shortenBtn" class="btn btn-primary">Shorten URL</button>
+      </div>
+      <div class="mt-3" id="shortenedUrlSection">
+        <p>Shortened URL:</p>
+        <a href="#" id="shortenedUrl" target="_blank"></a>
+      </div>
+    </div>
+
+    <script>
+      const urlMappings = {}; // Store short code to long URL mappings
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const shortenBtn = document.getElementById('shortenBtn');
+        const longUrlInput = document.getElementById('longUrl');
+        const shortenedUrlSection = document.getElementById(
+          'shortenedUrlSection',
+        );
+        const shortenedUrlLink = document.getElementById('shortenedUrl');
+
+        shortenBtn.addEventListener('click', () => {
+          const longUrl = longUrlInput.value;
+          const shortCode = generateShortCode();
+          urlMappings[shortCode] = longUrl; // Store mapping
+
+          shortenedUrlSection.style.display = 'block';
+          shortenedUrlLink.textContent = shortCode;
+          shortenedUrlLink.href = '#'; // Disable the link
+        });
+
+        shortenedUrlLink.addEventListener('click', (event) => {
+          const shortCode = event.target.textContent;
+          const longUrl = urlMappings[shortCode];
+          if (longUrl) {
+            window.open(longUrl, '_blank'); // Open the long URL in a new tab
+          }
+        });
+
+        function generateShortCode() {
+          const characters =
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+          let shortCode = '';
+          for (let i = 0; i < 6; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            shortCode += characters.charAt(randomIndex);
+          }
+          return shortCode;
+        }
       });
     </script>
   </body>
