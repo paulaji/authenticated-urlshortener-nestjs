@@ -35,7 +35,7 @@ This document has been authored by referencing the content provided in the backe
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-url-shortener.git
+   git clone https://github.com/paulaji/authenticated-urlshortener-nestjs.git
    ```
 
 2. Navigate to the project directory:
