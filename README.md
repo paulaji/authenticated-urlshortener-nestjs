@@ -8,7 +8,21 @@ This document has been authored by referencing the content provided in the backe
 
 #### Project snippets/images can be viewed in the images directory in the root.
 
+## Homepage
+
 ![homepage](images/nestjs_workingurlshortener.png)
+
+## Login page 
+
+![loginpage](images/nestjs_workinglogin.png)
+
+## Cookie 
+
+![cookie](images/nestjs_sessioncookieretrieved.png)
+
+## Not Authorized
+
+![noauth](images/nestjs_postrequestblockedwithoutauth.png)
 
 ## Technologies Used
 
