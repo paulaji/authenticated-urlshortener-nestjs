@@ -13,8 +13,6 @@ How to get started with running the project has also been mentioned below.
 - express-session
 - nanoid (optional)
 
-```markdown
-
 ## Installation
 
 1. Clone the repository:
