@@ -12,7 +12,7 @@ export class AppController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   login(@Request() req): any {
-    return req.user;
+    return { msg: 'User logged in' };
   }
 
   // making this route protected such that authenticated users can only access
