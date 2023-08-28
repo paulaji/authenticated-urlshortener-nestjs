@@ -4,7 +4,7 @@ This project implements a URL shortener using NestJS. It includes user authentic
 
 This document has been authored by referencing the content provided in the backendinfo.txt file. For more comprehensive information about the project, kindly consult the aforementioned file.
 
-How to get started with running the project has also been mentioned below.
+#### How to get started with running the project has also been mentioned below.
 
 ## Technologies Used
 
