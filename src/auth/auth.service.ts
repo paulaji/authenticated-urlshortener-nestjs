@@ -13,7 +13,10 @@ export class AuthService {
     const user = await this.usersService.findOne(username);
 
     if (user && user.password === password) {
-      return user;
+      const { username, password, ...rest } = user;
+      // while  defining a user object we had, id, name, username and password and the ...rest (the spread operator) will have id and name
+      return rest;
     }
+    return null;
   }
 }
