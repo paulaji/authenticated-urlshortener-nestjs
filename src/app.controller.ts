@@ -1,5 +1,5 @@
 // working
-import { Controller, Get, Post, UseGuards, Request } from '@nestjs/common';
+import { Controller, Get, Post, UseGuards, Request, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthenticatedGuard } from './auth/authenticated.guard';
@@ -20,7 +20,8 @@ export class AppController {
   // we have defined a context such that only if user is authenticated, we pass in the http requests
   @UseGuards(AuthenticatedGuard)
   @Get('protected')
-  getHello(@Request() req): string {
-    return req.user;
+  getHello(@Res() res): void {
+    // return req.user;
+    res.sendFile('index.html', { root: 'public' });
   }
 }
